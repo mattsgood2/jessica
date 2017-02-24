@@ -3,4 +3,16 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello Jessica & Leo.")
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    output = ', '.join([q.question_text for q in latest_question_list])
+    return HttpResponse(output)
+
+def detail(request, question_id):
+    return HttpResponse("You're looking for {}".format(question_id))
+
+def results(request, question_id):
+    response = "You're looking at the results for Question {}"
+    return HttpResponse(response, format(question_id))
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on Question {}".format(question_id))
