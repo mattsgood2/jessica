@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 
 from . import views
-#added name to the urls to namespace if more apps like below
+# added name to the urls to namespace if more apps like below
 app_name = 'polls'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
